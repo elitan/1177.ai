@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  db:
+    container_name: eess_db
+    image: nhost/postgres:14.6-20231031-1
+    restart: always
+    environment:
+      TZ: "Europe/Stockholm"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - 9005:5432
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    env_file:
+      - ../web/.env
+
+  web:
+    container_name: eess_web
+    restart: always
+    build:
+      context: ../web
+    depends_on:
+      - "db"
+    env_file:
+      - ../web/.env
+    ports:
+      - 8005:3000
