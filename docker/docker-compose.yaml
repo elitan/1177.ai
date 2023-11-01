@@ -2,7 +2,7 @@ version: "3.9"
 services:
   db:
     container_name: eess_db
-    image: nhost/postgres:14.6-20231031-1
+    image: ankane/pgvector
     restart: always
     environment:
       TZ: "Europe/Stockholm"
