@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/1-scrape.ts",
+    "start": "ts-node src/index.ts",
     "codegen": "kysely-codegen --dialect postgres --camel-case --out-file ./src/utils/kysely-types.d.ts"
   },
   "keywords": [],
@@ -12,8 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "@types/pg": "^8.10.7",
+    "axios": "^1.6.0",
+    "cheerio": "1.0.0-rc.12",
     "kysely": "^0.26.3",
     "kysely-codegen": "^0.11.0",
+    "langchain": "^0.0.178",
     "openai": "^4.14.2",
     "pg": "^8.11.3",
     "ts-node": "^10.9.1",
