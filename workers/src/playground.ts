@@ -15,8 +15,8 @@ async function main() {
 
   const raw = db
     .selectFrom("embeddingChunks")
-    .select(["id", "domainPathId"])
-    .orderBy(sql`embedding::VECTOR <=> '[${embedding.toString()}]'`)
+    .select(["id", "domainPathId", "chunkText"])
+    .orderBy(sql`embedding::VECTOR <=> ${"[" + embedding.toString() + "]"}`)
     .limit(5);
 
   const c = raw.compile();

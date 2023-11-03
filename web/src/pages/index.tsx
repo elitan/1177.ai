@@ -10,7 +10,7 @@ export default function Home() {
     >
       <div className='z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex'></div>
 
-      <div className='text-7xl bg-gradient-to-b from-gray-600 to-white inline-block text-transparent bg-clip-text font-bold'>
+      <div className='text-7xl bg-gradient-to-t from-gray-600 to-white inline-block text-transparent bg-clip-text font-semibold'>
         1177.ai
       </div>
       <img src='/bg.webp' />
