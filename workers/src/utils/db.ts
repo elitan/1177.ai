@@ -1,10 +1,10 @@
 import { CamelCasePlugin, Kysely, PostgresDialect } from "kysely";
 import { type DB } from "./kysely-types";
 import { Pool } from "pg";
-import "dotenv/config";
+import { env } from "./env";
 
 export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: env.DATABASE_URL,
 });
 
 export const db = new Kysely<DB>({

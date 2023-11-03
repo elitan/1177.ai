@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "sitemap": "ts-node src/1-1177-sitemap.ts",
+    "start": "ts-node src/2-1177-index.ts",
+    "playground": "ts-node src/playground.ts",
     "codegen": "kysely-codegen --dialect postgres --camel-case --out-file ./src/utils/kysely-types.d.ts"
   },
   "keywords": [],
@@ -20,6 +22,10 @@
     "openai": "^4.14.2",
     "pg": "^8.11.3",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
   }
 }

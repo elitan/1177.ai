@@ -35,6 +35,14 @@ dependencies:
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
+  zod:
+    specifier: ^3.22.4
+    version: 3.22.4
+
+devDependencies:
+  dotenv:
+    specifier: ^16.3.1
+    version: 16.3.1
 
 packages:
 
@@ -405,7 +413,6 @@ packages:
   /dotenv@16.3.1:
     resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
-    dev: false
 
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}

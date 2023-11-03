@@ -33,6 +33,11 @@ async function main() {
     });
 
     // TODO: insert new paths to db
+    await db
+      .updateTable("domainPaths")
+      .set({ crawlStatus: "CRAWLING_COMPLETED" })
+      .where("id", "=", path.id)
+      .execute();
 
     if (response.status !== 200) {
       console.log("not 200");
@@ -54,32 +59,24 @@ async function main() {
 
     const output = await splitter.createDocuments([textContent]);
 
-    console.log(output[0].pageContent);
-    console.log(output[0].metadata);
-
     const openAiEmbeddingResponse = await generateEmbedding(
       output[0].pageContent
     );
 
     console.log(openAiEmbeddingResponse.data);
 
-    const embedding = openAiEmbeddingResponse.data[0].embedding;
+    for (const embeddingResponse of openAiEmbeddingResponse.data) {
+      const { embedding } = embeddingResponse;
 
-    console.log(embedding);
-
-    await db
-      .insertInto("embeddingChunks")
-      .values({
-        chunkText: output[0].pageContent,
-        embedding: `[${embedding.toString()}]`,
-        domainPathId: path.id,
-      })
-      .execute();
-
-    process.exit(0);
-    // get data
-    // generate embeddings
-    // save in db
+      await db
+        .insertInto("embeddingChunks")
+        .values({
+          chunkText: output[0].pageContent,
+          embedding: `[${embedding.toString()}]`,
+          domainPathId: path.id,
+        })
+        .execute();
+    }
   }
 
   console.log("hello world 123123");
